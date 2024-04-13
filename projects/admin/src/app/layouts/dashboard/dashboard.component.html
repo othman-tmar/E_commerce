@@ -1,0 +1,321 @@
+
+<main id="main" class="main">
+
+
+
+  <section class="section">
+
+<div class="container pt-3">
+
+  <div class="col-lg-12 ">
+    <div class="card info-card sales-card">
+
+      <div class="filter">
+        <a class="icon" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+          <li class="dropdown-header text-start">
+            <h6>Filter</h6>
+          </li>
+
+          <li><a class="dropdown-item" href="#">Today</a></li>
+          <li><a class="dropdown-item" href="#">This Month</a></li>
+          <li><a class="dropdown-item" href="#">This Year</a></li>
+        </ul>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Total Revenues <span>| Today</span></h5>
+
+        <div class="d-flex align-items-center">
+          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+            <i class="bi bi-cart"></i>
+          </div>
+          <div class="ps-3">
+            <h6 class="text-success">{{TotalRevenues}} $</h6>
+            <span class="text-success small pt-1 fw-bold">12%</span> <span
+              class="text-muted small pt-2 ps-1">increase</span>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+
+      <div class="filter">
+        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+          <li class="dropdown-header text-start">
+            <h6>Filter</h6>
+          </li>
+
+          <li><a class="dropdown-item" >Today</a></li>
+          <li><a class="dropdown-item" >This Month</a></li>
+          <li><a class="dropdown-item" >This Year</a></li>
+        </ul>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Revenue<span>/Today</span></h5>
+
+        <!-- Line Chart -->
+        <div id="RevenueChart"></div>
+        <!-- End Line Chart -->
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-6 ">
+      <div class="card info-card sales-card">
+
+        <div class="filter">
+          <a class="icon" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <li class="dropdown-header text-start">
+              <h6>Filter</h6>
+            </li>
+
+            <li><a class="dropdown-item" href="#">Today</a></li>
+            <li><a class="dropdown-item" href="#">This Month</a></li>
+            <li><a class="dropdown-item" href="#">This Year</a></li>
+          </ul>
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title">Sales <span>| Today</span></h5>
+
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-cart"></i>
+            </div>
+            <div class="ps-3">
+              <h6>{{ordersNumber}} Orders</h6>
+              <span class="text-success small pt-1 fw-bold">12%</span> <span
+                class="text-muted small pt-2 ps-1">increase</span>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-lg-6 ">
+      <div class="card info-card sales-card">
+
+        <div class="filter">
+          <a class="icon" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <li class="dropdown-header text-start">
+              <h6>Filter</h6>
+            </li>
+
+            <li><a class="dropdown-item" href="#">Today</a></li>
+            <li><a class="dropdown-item" href="#">This Month</a></li>
+            <li><a class="dropdown-item" href="#">This Year</a></li>
+          </ul>
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title">Customers <span>| Today</span></h5>
+
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-people"></i>
+            </div>
+            <div class="ps-3">
+              <h6>{{usersNumber}} Customers</h6>
+              <span class="text-success small pt-1 fw-bold">12%</span> <span
+                class="text-muted small pt-2 ps-1">increase</span>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <!-- ./col -->
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+
+      <div class="filter">
+        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+          <li class="dropdown-header text-start">
+            <h6>Filter</h6>
+          </li>
+
+          <li><a class="dropdown-item" >Today</a></li>
+          <li><a class="dropdown-item" >This Month</a></li>
+          <li><a class="dropdown-item" >This Year</a></li>
+        </ul>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Reports<span>/Today</span></h5>
+
+        <!-- Line Chart -->
+        <div id="reportsChart"></div>
+        <!-- End Line Chart -->
+
+      </div>
+
+    </div>
+  </div>
+
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card info-card sales-card">
+
+      <div class="filter">
+        <a class="icon" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+          <li class="dropdown-header text-start">
+            <h6>Filter</h6>
+          </li>
+
+          <li><a class="dropdown-item" href="#">Today</a></li>
+          <li><a class="dropdown-item" href="#">This Month</a></li>
+          <li><a class="dropdown-item" href="#">This Year</a></li>
+        </ul>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Products <span>| Today</span></h5>
+
+        <div class="d-flex align-items-center">
+          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+            <i class="bi bi-bag"></i>
+          </div>
+          <div class="ps-3">
+            <h6>{{productsNumber}} products</h6>
+            <span class="text-success small pt-1 fw-bold">12%</span> <span
+              class="text-muted small pt-2 ps-1">increase</span>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-lg-6 ">
+    <div class="card info-card sales-card">
+
+      <div class="filter">
+        <a class="icon" href="#" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-three-dots"></i></a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+          <li class="dropdown-header text-start">
+            <h6>Filter</h6>
+          </li>
+
+          <li><a class="dropdown-item" href="#">Today</a></li>
+          <li><a class="dropdown-item" href="#">This Month</a></li>
+          <li><a class="dropdown-item" href="#">This Year</a></li>
+        </ul>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">Categories <span>| Today</span></h5>
+
+        <div class="d-flex align-items-center">
+          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+            <i class="bi bi-cart"></i>
+          </div>
+          <div class="ps-3">
+            <h6>{{categoriesNumber}} categories</h6>
+            <h6>{{subcategoriesNumber}} subcategories</h6>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Top Selling -->
+<div class="col-12">
+  <div class="card top-selling overflow-auto">
+
+    <div class="filter">
+      <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+        <li class="dropdown-header text-start">
+          <h6>Filter</h6>
+        </li>
+
+        <li><a class="dropdown-item" href="#">Today</a></li>
+        <li><a class="dropdown-item" href="#">This Month</a></li>
+        <li><a class="dropdown-item" href="#">This Year</a></li>
+      </ul>
+    </div>
+
+    <div class="card-body pb-0">
+      <h5 class="card-title">Top Selling <span>| Today</span></h5>
+
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col">Preview</th>
+            <th scope="col">Product</th>
+            <th scope="col">Sold</th>
+            <th scope="col">Revenue</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let topSelling of TopSellingList">
+            <th scope="row"><a href="#"><img src={{topSelling.imageCover}} alt=""></a></th>
+            <td><a href="#" class="text-primary fw-bold">{{topSelling.title}}</a></td>
+            <td class="fw-bold">{{topSelling.sold}}</td>
+            <td>{{topSelling.revenue}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+</div><!-- End Top Selling -->
+
+</div>
+
+</section>
+
+</main>
+
+<script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/assets/vendor/quill/quill.min.js"></script>
+  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/assets/vendor/php-email-form/validate.js"></script>
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">

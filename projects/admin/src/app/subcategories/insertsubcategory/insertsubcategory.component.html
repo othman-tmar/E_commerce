@@ -1,0 +1,106 @@
+<!-- <div class="container p-2 bg-light">
+    <h1 class="text-center mt-2">Add new subcategory</h1>
+    <form (ngSubmit)="Addsubcategory()">
+      <div class="mb-4">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" name="title" placeholder="Product name" [(ngModel)]="newsubcategory.name">
+  
+      </div>
+  
+      <div class="mb-4">
+        <label for="imageart" class="form-label">Image </label>
+        <input type="file" (change)="onFileChange($event)" name="imageart">
+      </div>
+  
+      
+  
+  <div class="mb-4">
+    <label for="category">Category</label>
+  <select [(ngModel)]="newsubcategory.category"  class="form-select" aria-label="Default select example" name="category">
+    <option disabled>Select a category</option>
+    <option *ngFor="let a of categories" [value]="a._id">{{a.name}}</option>
+  </select>
+  </div>  
+  
+      <button type="submit" class="btn btn-success">submit</button>
+    </form>
+  </div>
+ -->
+
+
+ 
+<main id="main" class="main">
+
+
+
+  <section class="section">
+
+    <form class="row" (ngSubmit)="Addsubcategory()">
+
+      <div class="col-lg-8">
+
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title" style="font-size: 25px;">Subcategory Form </h1>
+            <hr>
+
+
+            <div class=" mb-3">
+              <label for="title" class="mb-1" style="font-size: 20px;">Title</label>
+              <input type="text" class="form-control " name="title" style="font-size: 15px;" placeholder=" Title"
+                [(ngModel)]="newsubcategory.name">
+            </div>
+          </div>
+
+
+          <div class="mb-3 ">
+            <label  for="Category" class=" col-form-label ms-4 " style="font-size: 20px;">Category</label>
+            <div style="margin-inline-end:40px;;">
+              <select [(ngModel)]="newsubcategory.category"  class="form-select ms-4 " 
+                aria-label="Default select example" name="Category">
+                <option selected>Select a Category</option>
+                <option *ngFor="let a of categories" [value]="a._id">{{a.name}}</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+     
+
+        <div class="col-lg-4">
+
+
+          <div class="card">
+            <div class="card-body mt-3">
+              <label for="inputText" style="font-size: 20px;">Image <span style="font-size: 12px;">(suggested
+                  1:1)</span></label>
+              <hr>
+              <ngx-dropzone  class="justify-content-center"  (change)="onSelect($event)">
+              
+
+             
+                <ngx-dropzone-image-preview class="justify-content-center"   ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+                  [removable]="true" (removed)="onRemove(f)">
+
+                </ngx-dropzone-image-preview>
+              </ngx-dropzone>
+              <ngx-dropzone class=" select-image mt-3 text-center" (change)="onSelect($event)"  >Select
+                Image</ngx-dropzone>
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+        <button *ngIf="!submitButton" type="submit" class="btn btn-success col-2 ms-3 disabled" id="submitbtn">Please wait...</button>
+        <button *ngIf="submitButton" type="submit" class="btn btn-success col-2 ms-3" id="submitbtn" >submit</button>
+      
+    </form>
+
+  </section>
+
+</main>

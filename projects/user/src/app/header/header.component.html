@@ -1,0 +1,179 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<header>
+  <div class="top-wrapper">
+    <div class="container-fluid">
+      <div class="wrap flex sided ">
+
+        <div class="left wrap flex">
+          <a href="mailto:othman23.tmar@gmail.com" class="flex">
+            <i class="fa fa-envelope mr-5"></i>
+            <span>
+              <span>Mail</span> othman23.tmar&#64;gmail.com</span>
+          </a>
+          <span>|</span>
+          <a href="tel:26061336" class="flex">
+            <i class="fa  fa-phone mr-5"></i>
+            <span><span>Helpline</span>+216 26061336</span>
+          </a>
+        </div>
+
+
+        <div class="flex right text-upper">
+
+          <div *ngIf="!this.userUID" class="flex">
+            <a routerLink="/sign-in" class="flex">
+              <i class="fa fa-sign-in mr-5"></i>
+              Login
+            </a>
+            <span>|</span>
+            <a routerLink="/register-user" class="flex">
+              <i class="fa fa-user-plus mr-5"></i>
+              Register
+            </a>
+          </div>
+
+          <div *ngIf="this.userUID" class="flex right text-upper">
+            <a routerLink="/dashboard" class="flex">
+              <i class="fa fa-user mr-5"></i>
+
+              Profile
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container-fluid flex pos-rel">
+
+    <div class="left-area"><a routerLink="/" class="logo nuxt-link-active ">
+        <img src="../../assets/logo.png" alt="Site Logo" height="100%" width="150"></a>
+    </div>
+
+
+    <form class="search-input grow d-flex form-group" role="search">
+      <select class="form-select rounded-0 rounded-start-pill" style="width: 24%;height: 42px;"
+        (change)="filtercategories($event)">
+        <option value="">&nbsp; All Categories</option>
+        <option *ngFor="let c of categories" value="{{c._id}}" class="text-capitalize">&nbsp;{{c.name}}</option>
+      </select>
+
+      <input (input)="setSearch($event)" (focus)="setSearch($event)" (blur)="hideSearch()" type="text" placeholder="Search Here" value="">
+
+      <button aria-label="submit" type="submit" class="flex">
+        <i class="fa fa-search"></i>
+      </button>
+
+      <!-- Search Popup---->
+      <div class="search-popup d-flex " *ngIf="searchText">
+        <div class="sb popup-inner">
+          <div class="pop-over-content ">
+            <div>
+              <h4 class="bold"> Categories </h4>
+              <div class="mb-15 row  text-center  pt-2 ">
+                <div class="category-wrapper border col-6  col-md-4  " *ngFor="let s of subcategories|filter:searchText">
+                  <a (click)="filtersubcategories(s._id)" class="page-link center-text item" style="cursor: pointer;">
+                    <div class="img-wrapper bg-dark">
+                      <img height="50" width="50" class="lazy-img" src={{s.image}} data-loaded="true"
+                        style="opacity: 1;">
+                    </div>
+                    <h5 class="title ellipsis" >{{s.name}}</h5>
+                  </a>
+                </div>
+              </div>
+              <h4 class="bold">Products</h4>
+              <div class="mb-15 row ms-3 pb-3 pt-2 ">
+
+                <div class="search-section search-product-tile    col-12 mt-1  " *ngFor="let product of products |filter:searchText ">
+                  <a [routerLink]="['/product',product._id]" class="page-link center-text item">
+                    <div class="item-inner">
+                      <div class="img-container">
+                        <div class="img-wrapper">
+                          <img height="50" width="50" class="lazy-img" src={{product.imageCover}} data-loaded="true"
+                            style="opacity: 1;">
+                        </div>
+                      </div>
+                      <div class="title-wrap">
+                        <h5 class="ellipsis ellipsis-1 mb-5">{{product.title}}</h5>
+                        <div class="pos-rel flex start">
+                          <h5><span class="strike-through"><span>${{product.price}}</span></span>
+                            <span class="f-12"><span>${{product.priceAfterDiscount}}</span></span>
+                          </h5> <span class="discount ml-10"> -{{product.sold}}% </span>
+                          <button aria-label="submit" title="Compare" class="compare-btn">
+                            <i class="icon reload-icon"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
+
+
+
+
+
+    <div class="right-area flex right">
+      <div class="pos-rel">
+
+        <button aria-label="submit" class="flex mr-20 mr-sm-10 " data-bs-toggle="dropdown">
+          My Account
+          <i class="ml-10 fa fa-arrow-down black"></i>
+        </button>
+
+
+        <div class="dropdown-menu" style="--bs-dropdown-min-width:0;">
+          <a class=" dropdown-item" routerLink="/orders"> Orders</a>
+          <a (click)="SignOut()" class=" dropdown-item" style="cursor: pointer;">Logout</a>
+        </div>
+
+
+      </div>
+      <a routerLink="/mycart" class="cart-btn flex pos-rel h-40x ">
+        <span id="cartCounter" *ngIf="cartCounter>0">{{cartCounter}}</span>
+        <i class="fa fa-shopping-cart  mr-5"></i>
+        <span class="title">Cart</span>
+      </a>
+    </div>
+  </div>
+
+
+  <div class="bottom-area text-nowrap">
+    <div class="container-fluid">
+      <div class="flex sided">
+        <div><a routerLink="discover/products"><span>
+              Discover Products
+            </span></a>
+            <a routerLink="/categories"><span>
+              Categories
+            </span></a> <a routerLink="/brands"><span>
+              Brands
+            </span></a> <a routerLink="/flash-sale"><span>
+              Hot Deals
+            </span></a>
+          </div>
+        <div><a routerLink="/orders"><span>
+              Track Order
+            </span></a> <a routerLink="/faq"><span>
+              FAQ
+            </span></a> <a routerLink="/help"><span>
+              Help
+            </span></a> <a routerLink="/contact" aria-current="page" class="nuxt-link-exact-active nuxt-link-active"><span>
+              Contact us
+            </span></a>
+          </div>
+      </div>
+    </div>
+  </div>
+</header>

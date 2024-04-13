@@ -1,0 +1,155 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<main id="main" class="main">
+
+
+
+  <section class="section">
+
+    <form class="row" (ngSubmit)="Addproduct()">
+
+      <div class="col-lg-8">
+
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title" style="font-size: 25px;">Product Form </h1>
+            <hr>
+
+
+            <div class=" mb-3">
+              <label for="title" class="mb-1" style="font-size: 20px;">Title</label>
+              <input type="text" class="form-control " name="title" style="font-size: 15px;" placeholder=" Title"
+                [(ngModel)]="newproduct.title">
+            </div>
+
+            <div class=" mb-3">
+              <label style="font-size: 20px;" for="description" class="mb-1">Description</label>
+              <angular-editor [config]="config" name="description" [(ngModel)]="htmlContent"
+                [(ngModel)]="newproduct.description"></angular-editor>
+            </div>
+
+
+            <div class="row  mb-3 justify-content-around">
+              <div class="col-4">
+                <label for="price"  class=" col-form-label" style="font-size: 20px;">Price</label>
+                <input type="number"  name="price" class="form-control" placeholder=" Price" style="font-size: 15px;"
+                  [(ngModel)]="newproduct.price">
+              </div>
+
+              <div class="col-4 ">
+                <label for="sold"  class="col-form-label" style="font-size: 20px;">Sold </label>
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder=" Sold" name="sold"  style="font-size: 15px;"
+                    [(ngModel)]="newproduct.sold" />
+                  <span class="input-group-text">%</span>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <label for="quantity" class=" col-form-label" style="font-size: 20px;">Quantity</label>
+                <input type="number" class="form-control" name="quantity" placeholder=" Quantity" style="font-size: 15px;"
+                  [(ngModel)]="newproduct.quantity">
+              </div>
+            </div>
+
+
+            <div class=" mb-3 ">
+              <label class=" col-form-label" style="font-size: 20px;">Colors</label>
+              <div>
+                <select class="form-select" multiple [(ngModel)]="newproduct.colors">
+                  <option *ngFor="let color of colors" [value]="color" class="form-check " style="font-size: 15px;">
+                    {{color}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row justify-content-between">
+
+              <div class="mb-3 col-5">
+                <label  for="Category" class=" col-form-label" style="font-size: 20px;">Category</label>
+                <div>
+                  <select  (change)="onCategoryChange($event)" class="form-select"
+                    aria-label="Default select example" name="Category">
+                    <option selected>Select a Category</option>
+                    <option *ngFor="let a of categories" [value]="a._id">{{a.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-3 col-5">
+                <label  for="subCategory" class=" col-form-label" style="font-size: 20px;">Subcategory</label>
+                <div>
+                  <select  [(ngModel)]="newproduct.subcategory" (change)="onSubcategoryChange($event)"
+                    class="form-select" aria-label="Default select example" name="SubCategory">
+                    <option selected>Select a subcategory</option>
+                    <option *ngFor="let a of subcategoriesFiltred" [value]="a._id">{{a.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4">
+
+        <div class="card">
+          <div class="card-body mt-3">
+            <label for="imageart" style="font-size: 20px;">Preview image <span style="font-size: 12px;">(suggested
+                1:1)</span></label>
+            <hr>
+            <hr>
+            <ngx-dropzone  class="justify-content-center" (change)="onSelectImageCover($event)">
+
+
+
+              <ngx-dropzone-image-preview class="justify-content-center"   ngProjectAs="ngx-dropzone-preview" *ngFor="let f of filesImageCover" [file]="f"
+                [removable]="true" (removed)="onRemove(f)">
+
+              </ngx-dropzone-image-preview>
+            </ngx-dropzone>
+            <ngx-dropzone class=" select-image mt-3 text-center" (change)="onSelectImageCover($event)"   >Select
+              main image </ngx-dropzone>
+
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body mt-3">
+            <label for="inputText" style="font-size: 20px;">Details images <span style="font-size: 12px;">(suggested
+              1:1)</span></label>
+              <hr>
+            <ngx-dropzone (change)="onSelectImages($event)" >
+              <div class="img-area-images" data-img="">
+                <i class='bx bxs-cloud-upload icon'></i>
+                <h3>Upload Image</h3>
+
+              </div>
+              <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)"  >
+
+              </ngx-dropzone-image-preview>
+            </ngx-dropzone>
+            <ngx-dropzone class=" select-image mt-3 text-center" (change)="onSelectImages($event)" >Select Images</ngx-dropzone>
+
+
+  
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <button *ngIf="!submitButton" type="submit" class="btn btn-success col-2 ms-3 disabled" id="submitbtn">Please wait...</button>
+      <button *ngIf="submitButton" type="submit" class="btn btn-success col-2 ms-3" id="submitbtn" >submit</button>
+    </form>
+
+
+
+
+
+  </section>
+
+</main>

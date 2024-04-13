@@ -1,0 +1,366 @@
+body {
+  background-color: #ecedee
+}
+
+.card {
+  border: none;
+  overflow: hidden
+}
+
+.thumbnail_images ul {
+  list-style: none;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  margin-top: 10px
+}
+
+.thumbnail_images ul li {
+  margin: 5px;
+  padding: 10px;
+  border: 2px solid #eee;
+  cursor: pointer;
+  transition: all 0.5s
+}
+
+.thumbnail_images ul li:hover {
+  border: 2px solid #000
+}
+
+.main_image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  height: 320px;
+  width: 100%;
+  overflow: hidden
+}
+
+
+
+.content p {
+  font-size: 12px
+}
+
+
+
+.colors ul {
+  list-style: none;
+  display: flex;
+  padding-left: 0px
+}
+
+.colors ul li {
+  height: 20px;
+  width: 20px;
+  display: flex;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer
+}
+
+
+
+.right-side {
+  position: relative
+}
+
+
+
+.buttons .btn {
+  height: 50px;
+  width: 150px;
+  border-radius: 0px !important
+}
+
+.percent{
+
+  width: 63px;
+height: 30px;
+position: absolute;
+background: red;
+color: #fff;
+border-radius: 3px;
+display: flex;
+justify-content: center;
+align-items: center;
+right: 0;
+border-bottom-left-radius: 15px;
+padding: 10px;
+
+}
+
+
+
+.main{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 100%;
+margin-top: 150px;
+}
+
+.full-boxer{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+align-items: center;
+width: 100%;
+}
+
+
+
+
+
+.comment-box{
+
+background: white;
+padding-top: 10px;
+
+border-radius: 8px;
+cursor: pointer;
+box-shadow: 3px 3px 25px rgba(0,0,0,0.3);
+}
+
+
+
+
+
+.profile-image img{
+box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+border-radius: 50%;
+height: 40px;
+width: 40px;
+
+}
+
+
+
+.comment p{
+color: black;
+}
+.com-box{
+width: 100%;
+background: white;
+padding: 20px;
+margin: 15px;
+border-radius: 8px;
+cursor: pointer;
+box-shadow: 3px 3px 25px rgba(0,0,0,0.3);
+}
+.comment-box1{
+box-shadow: 3px 3px 25px rgba(0,0,0,0.3);
+}
+/* span {
+font-size: small;
+line-height: 150%;
+}
+ */
+
+.rating-stars span {
+  line-height: 1
+}
+.rating-stars {
+  font-size: 1.7em;
+  line-height: 1 !important
+}
+
+.rating-stars {
+  color: #ffa41c;
+  font-size: 1.2em;
+  position: relative
+}
+
+.rating-stars .rating {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+
+}
+
+
+.color-lite {
+  color: #555
+}
+.semi-bold {
+  font-weight: 600
+}
+
+
+
+
+
+
+/* ------------- */
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css);
+
+
+.center{
+width: 162px;
+margin: auto;
+}
+
+
+#rating-value{
+width: 110px;
+margin: 40px auto 0;
+padding: 10px 5px;
+text-align: center;
+box-shadow: inset 0 0 2px 1px rgba(46,204,113,.2);
+}
+
+/*styling star rating*/
+.rating{
+border: none;
+float: left;
+}
+
+.rating > input{
+display: none;
+}
+
+.rating > label:before{
+content: '\f005';
+font-family: FontAwesome;
+margin: 5px;
+font-size: 1.5rem;
+display: inline-block;
+cursor: pointer;
+}
+
+.rating > .half:before{
+content: '\f089';
+position: absolute;
+cursor: pointer;
+}
+
+
+.rating > label{
+color: #ddd;
+float: right;
+cursor: pointer;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label{
+color: orange;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label{
+color: orange;
+}
+
+
+
+.crop {
+  overflow: hidden;
+}
+
+.box {
+  position: absolute;
+
+}
+
+.box1 {
+
+  z-index: 1;
+}
+
+.box2 {
+
+  z-index: 2;
+
+}
+.fa-star {
+  color: orange;
+}
+.fa-star-o {
+  color: orange;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+
+
+.card1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 20px;
+    width: 450px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 6px;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1)
+}
+
+.comment-box{
+
+    padding:5px;
+}
+
+
+
+.comment-area textarea{
+   resize: none;
+        border: 1px solid #ad9f9f;
+}
+
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ffffff;
+    outline: 0;
+    box-shadow: 0 0 0 1px rgb(255, 0, 0) !important;
+}
+
+
+
+
+.rating1-stars {
+  color: #ffa41c;
+  font-size: 1.2em;
+  position: relative
+}
+
+.rating1-stars .rating1 {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0
+}
+
+.rating1-stars {
+  font-size: 1.7em;
+  line-height: 1 !important
+}
+
+.rating1-stars span {
+  line-height: 1
+}
+
+
+

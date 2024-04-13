@@ -1,0 +1,325 @@
+<div class="container-fluid  pt-5">
+
+  <div class="main-slider home-section ">
+    <div class="slider-wrapper has-right ">
+
+
+      <div class="left flow-hidden">
+        <div class="pos-rel ">
+
+
+          <div id="demo" class=" carousel carousel-fade " data-bs-ride="carousel" style="height: 100%;">
+
+            <div class=" carousel-indicators">
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+              <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+            </div>
+
+
+            <div class=" carousel-inner slider-content block ">
+
+
+              <div class=" carousel-item active " style="height: 100%;">
+                <img src="https://cdn.ishop.cholobangla.com/uploads/slider-1.webp" style="height: 100%;">
+              </div>
+
+
+
+              <div class=" carousel-item" style="height: 100%;">
+                <img src="https://cdn.ishop.cholobangla.com/uploads/slider-2.webp" style="height: 100%;">
+              </div>
+
+              <div class=" carousel-item" style="height: 100%;">
+                <img src="https://cdn.ishop.cholobangla.com/uploads/slider-3.webp" style="height: 100%;">
+              </div>
+
+
+            </div>
+
+            <div class="glide-nav">
+              <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="right">
+        <a href="/backpack-for-men/products?home_spm=4" class="img-wrap block">
+          <img src="https://cdn.ishop.cholobangla.com/uploads/slider-4.webp" height="100" width="100"
+            alt="Slider image">
+        </a>
+        <a href="/puma-stylist-shoes/products?home_spm=5" class="img-wrap block">
+          <img src="https://cdn.ishop.cholobangla.com/uploads/slider-5.webp" height="100" width="100"
+            alt="Slider image">
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class=" flash-slider  mt-5 mb-5">
+    <div>
+      <div class="area home-section">
+        <div class="flex sided title">
+          <div class="flex">
+            <h4 class="mr-10">{{thisYear}}'s Products</h4>
+            <h5></h5>
+          </div>
+          <a href="/flash-sale/1" class="link">
+            Show all
+          </a>
+        </div>
+        <div class="area-content">
+
+          <div id="flashventes" class=" carousel  " data-bs-ride="carousel">
+
+
+            <div class="glide-nav">
+              <button (click)="previousFlash()" class="carousel-control-prev bg-secondary pt-1" type="button"
+                data-bs-target="#flashventes" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button (click)="nextFlash()" class="carousel-control-next bg-secondary pt-1" type="button"
+                data-bs-target="#flashventes" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+
+
+
+            <div class="carousel-inner  ">
+
+              <div class="carousel-item active row   ps-2 pe-2 ">
+
+                <div *ngFor="let p of productsFlashDisplay" class="col-6 col-lg-2 ">
+
+                  <div class="p-tile text-center " style="height: 200px;">
+                    <a [routerLink]="['/product',p._id]">
+                      <div class="img-wrapper " style="height: 170px;">
+                        <img height="50" width="50" class="lazy-img  " src={{p.imageCover}} data-loaded="true"
+                          style="opacity: 1;">
+                      </div>
+                      <div class="flex sided align-center item-title mt-0 " style="height: 30px;">
+                        <h4 class="price-wrapper">
+                          <span class="price"><span>${{p.priceAfterDiscount}}</span></span>
+                          <span class="strike-through"><span>${{p.price}}</span></span>
+                        </h4>
+                        <h5 class="color-primary">
+                          <span *ngIf="p.sold" class="discount">{{p.sold}}% off</span>
+                        </h5>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="product-banner mt-5">
+    <a href="/homesick-new-home-reed-diffuser/product/88630161" class="block banner-wrapper">
+      <img src="https://cdn.ishop.cholobangla.com/uploads/banner-2.webp" alt="Voucher" height="200" width="10"
+        class="block">
+    </a>
+    <a href="/discount/products?banner=3" class="block banner-wrapper">
+      <img src="https://cdn.ishop.cholobangla.com/uploads/banner-3.webp" alt="Discount" height="200" width="10"
+        class="block">
+    </a>
+    <a href="/black-friday/products?banner=4" class="block banner-wrapper">
+      <img src="https://cdn.ishop.cholobangla.com/uploads/banner-4.webp" alt="Black friday" height="200" width="10"
+        class="block">
+    </a>
+  </div>
+
+
+
+
+
+  <div class=" flash-slider  mt-5 mb-5">
+    <div>
+      <div class="area home-section">
+        <div class="flex sided title">
+          <div class="flex">
+            <h4 class="mr-10">Most Rated Products</h4>
+            <h5></h5>
+          </div>
+          <a href="/flash-sale/1" class="link">
+            Show all
+          </a>
+        </div>
+        <div class="area-content">
+
+          <div id="flashventes" class=" carousel  " data-bs-ride="carousel">
+
+
+            <div class="glide-nav">
+              <button (click)="previousMostRatedProductsDisplay()" class="carousel-control-prev bg-secondary pt-1"
+                type="button" data-bs-target="#flashventes" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button (click)="nextMostRatedProductsDisplay()" class="carousel-control-next bg-secondary pt-1"
+                type="button" data-bs-target="#flashventes" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+
+            <!-- *ngIf=" ScreenWidth<1000&&i<2||ScreenWidth>1000" -->
+
+            <div class="carousel-inner mb-5 ">
+
+              <div class="carousel-item active row  ps-4 pe-2  pt-2 d-flex justify-content-around">
+
+                <div *ngFor="let p of mostRatedProductsDisplay; let i = index" class=" col-6 col-lg-2 "
+                  style="height: 320px;">
+
+                  <div class=" text-center">
+
+                    <a [routerLink]="['/product',p._id]" class="page-link">
+
+                      <div class="img-wrapper text-center " style="height: 200px;">
+                        <img height="50" width="50" class="lazy-img  p-2 p-lg-4" src={{p.imageCover}} data-loaded="true"
+                          style="opacity: 1;">
+                      </div>
+
+                      <div class="item-title mb-1">
+                        <h6 class="ellipsis ellipsis-2 text-center "
+                          style="font-weight: 600;height:25px ;overflow:hidden;">
+                          {{p.title}}
+                        </h6>
+                        <div class="mtb-5">
+                          <span title="{{p.ratingsAverage}} out of 5" class="rating-stars">
+                            <span>☆☆☆☆☆</span>
+                            <span class="rating" [style.width.%]="p.ratingsAverage*20">★★★★★</span>
+                          </span>
+                          <span class="f-10 ml-5 semi-bold color-lite">{{p.ratingsQuantity}} Reviews</span>
+                        </div>
+                        <div class="flex sided align-center item-title mt-0 " style="height: 30px;">
+                          <h4 class="price-wrapper">
+                            <span class="price"><span>${{p.priceAfterDiscount}}</span></span>
+                            <span class="strike-through"><span>${{p.price}}</span></span>
+                          </h4>
+                          <h5 class="color-primary">
+                            <span *ngIf="p.sold" class="discount">{{p.sold}}% off</span>
+                          </h5>
+                        </div>
+                      </div>
+                    </a>
+
+
+
+                  </div>
+                </div>
+
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div type="subCategory" class="area home-section category-wrapper ">
+    <div class="flex sided title ">
+      <h4>Featured Categories</h4>
+      <a href="/categories" class="link">
+        Show all
+      </a>
+    </div>
+    <div class="area-content ">
+
+      <div id="flashventes" class=" carousel C1" data-bs-ride="carousel">
+
+
+        <div class="glide-nav">
+          <button (click)="previousFaturedSubcategories()" class="carousel-control-prev me-2 bg-secondary pt-1"
+            type="button" data-bs-target="#flashventes" data-bs-slide="prev" style="transform:translateY(-50%);top:+25%;">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button (click)="nextFaturedSubcategories()" class="carousel-control-next bg-secondary pt-1"
+            type="button" data-bs-target="#flashventes" data-bs-slide="next" style="transform:translateY(-50%);top:+25%;">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+
+
+
+        <div class="carousel-inner  ">
+
+          <div class="carousel-item active row flex   ">
+            <div *ngFor="let sub of faturedSubcategories" class="col-6 col-lg-2 ">
+
+              <div class="p-tile d-flex   justify-content-center  " style="height: 200px;">
+
+                <a [routerLink]="['/productsfilteredbysub',sub._id]" title="Tops" class=" text-center   ">
+
+                  <span class="mode mode_process p-3  bg-dark" style="height: 100px;width: 100px;border-radius: 50%;">
+                    <img src={{sub.image}} width="16" height="16" >
+                  </span>
+
+                  <div class="item-title mb-1">
+                    <h5 class="text-capitalize " style="height: 30px;">
+                      {{sub.name}}
+                    </h5>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+
+
+</div>

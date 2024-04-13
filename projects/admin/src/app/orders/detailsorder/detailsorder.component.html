@@ -1,0 +1,160 @@
+<!-- <main id="main" class="main">
+
+
+
+    <section class="section">
+  
+  <div class="container pt-3">
+  
+      <div *ngFor="let o of orders" class="mb-3 row" style="background-color: #d3ae37;border-radius: 23px;">
+  
+  
+          <div class="col-lg-4  ps-4 pt-3 pb-3">
+              <div><h6 > Order id : {{o._id}}</h6></div>
+              <div><h6 > Date : {{ o.createdAt | date:'short' }}</h6></div>
+              <div><h6 >Products number : {{o.productsNumber}}</h6></div>
+              <div><h6 >Client id : {{o.useruid}}</h6> </div>
+              <div *ngFor="let u of users">
+                <div *ngIf="u.uid == o.useruid">
+                <h6>{{u.displayName}}</h6>
+                <h6 *ngIf="u.phone">{{u.phone}}</h6>
+                <h6 *ngIf="u.adress"> Adress : {{u.adress}}, {{u.city}}</h6>
+                <h6>{{u.email}}</h6>
+  
+                 </div>
+              </div>
+          </div>
+  
+  
+          <div class="col-lg-6  pt-3 border" >
+              <div *ngFor="let item of o.orderItems " class=" mb-2" style="border-radius: 23px;">
+                  <div *ngFor="let p of products">
+                      <div *ngIf="item.product == toString(p._id)" class="row" >
+  
+                          <div class="col-6 p-2 ps-5">
+                          <div> <h6 >{{p.title}}</h6></div>
+                          <div> <h6>Quantity : {{item.quantity}}</h6></div>
+                          <div class="price-wrap lh-sm">
+                          <div> <h6 >  Quantity price : {{item.price}} $</h6></div>
+                          <div> <h6 >Price per item : {{p.priceAfterDiscount}} $</h6></div>
+  
+                          </div>
+                      </div>
+  
+                      <div class="col-4 p-1 d-flex align-items-center">
+                          <img src={{p.imageCover}} width="120" height="120" class="p-1 " style="border-radius: 10px;">
+                      </div>
+  
+                      </div>
+                  </div>
+              </div>
+          </div>
+  
+  
+  
+          <div class="col-lg-2  p-2">
+              <div class="card">
+                  <div class="card-body">
+                      <dl class="dlist-align">
+                          <dt>Total price:</dt>
+                          <dd class="text-end"> {{o.totalOrderPrice}}</dd>
+                      </dl>
+                      <dl class="dlist-align">
+                          <dt>Discount:</dt>
+                          <dd class="text-end text-success"> - ${{o.discount}}</dd>
+                      </dl>
+                      <dl class="dlist-align">
+                          <dt>TAX:</dt>
+                          <dd class="text-end"> ${{o.tax}} </dd>
+                      </dl>
+                      <hr>
+                      <dl class="dlist-align">
+                          <dt>Total:</dt>
+                          <dd class="text-end text-dark h5"> ${{o.finalPrice}} </dd>
+                      </dl>
+  
+                      <div class="d-grid gap-2 my-3">
+                          <button  class="btn btn-success w-100"> Confirm Order </button>
+                          <button (click)="deleteOrder(o._id)" class="btn btn-danger w-100"> Cancel Order </button>
+                      </div>
+                  </div> 
+              </div> 
+          </div>
+  
+  
+  
+  
+  
+  
+      </div>
+  </div>
+  
+  </section>
+  </main>
+ -->
+<main id="main" class="main">
+    <section class="section">
+        <div class="row">
+
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Customer Details</h5>
+
+                    <ul class="list-group">
+                        <li class="list-group-item">id : {{order.useruid}}</li>
+                        <div *ngFor="let u of users">
+                            <div *ngIf="u.uid == order.useruid">
+                                <li class="list-group-item">Name : {{u.displayName}}</li>
+                                <li class="list-group-item">Phone Number : {{u.phone}}</li>
+                                <li class="list-group-item">Adress : {{u.adress}}, {{u.city}}</li>
+                                <li class="list-group-item">Email : {{u.email}}</li>
+                            </div>
+                        </div>
+                    </ul>
+
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body ">
+                    <h5 class="card-title mb-4">Order Details</h5>
+                    <div class="list-group ">
+                        <li class="list-group-item">Order id: {{order._id}}</li>
+                        <li class="list-group-item"> Date : {{ order.createdAt | date:'short' }}</li>
+                        <li class="list-group-item">Products number : {{order.productsNumber}}</li>
+                      
+                    </div>
+                    <div class="list-group mt-4">
+                        <div *ngFor="let item of order.orderItems " class=" mb-2" style="border-radius: 23px;">
+                            <div *ngFor="let p of products">
+                                <div *ngIf="item.product == toString(p._id)" class="row border align-items-center">
+
+                                    <div class="col-6 p-2 ps-5  ">
+                                    
+                                        <tr><td style="font-weight: 1000 ;" >Product Name :</td> {{p.title}}</tr>
+                                    <tr> <td style="font-weight: 1000 ;" >Quantity :</td> {{item.quantity}}</tr>
+                                    <tr><td style="font-weight: 1000 ;" >Price per item :</td> {{p.priceAfterDiscount}} $</tr>
+                                    <tr><td style="font-weight: 1000 ;" >Quantity price :</td> {{item.price}} $</tr>
+                                    </div>
+                                    
+
+                                    <div class="col-6 p-1 text-center align-items-center  " >
+                                        <img src={{p.imageCover}} width="120" height="120" class="p-1 border "
+                                            style="border-radius: 10px">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+</main>

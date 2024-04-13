@@ -1,0 +1,69 @@
+
+
+
+<div>
+  <div class="displayTable">
+    <div class="displayTableCell">
+      <div class="authBlock">
+        <h3>Sign In</h3>
+        <div class="formGroup">
+          <input type="text" class="formControl" placeholder="Username" #userName required>
+        </div>
+        <div class="formGroup">
+          <input type="password" class="formControl" placeholder="Password" #userPassword required>
+        </div>
+        <div class="row">
+          <div class=" col-6 pt-2">
+            <a routerLink="/forgot-password">Forgot Password?</a>
+          </div>
+          <div class="col-2"></div>
+          <div class=" col-4 pull-and">
+            <input type="button" class="btn loginBtn"  value="Log in"
+              (click)="authService.SignIn(userName.value, userPassword.value)">
+          </div>
+
+        </div>
+        <div class="redirectToLogin text-dark mt-1">
+          <h5>Don't have an account?<i class="redirect text-success ps-4 "  style="color: #4dd5fe;" routerLink="/register-user">
+            Create an account
+          </i></h5>
+        </div>
+
+
+
+        <div class="formGroup mt-1">
+          <span class="or"><span class="orInner">Or</span></span>
+        </div>
+
+        <div class="row">
+          <div class=" col-6">
+            <button type="button" class="btn facebookBtn" value="Log in"
+              (click)="authService.SignIn(userName.value, userPassword.value)">
+
+              <img src="../../../assets/facebook.png" class="pe-1 mb-1">
+              Login with facebook
+            </button>
+          </div>
+
+          
+          <div class="col-6 ">
+            <button type="button" class="btn btn-light googleBtn " (click)="authService.GoogleAuth()">
+              <img src="../../../assets/google.png" class="pe-1 mb-1">
+              Log in with Google
+            </button>
+          </div>
+        </div>
+
+
+
+
+
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,108 @@
+
+<main id="main" class="main">
+
+
+
+    <section class="section">
+
+        <form class="row" (ngSubmit)="ApdateAdmin()">
+
+            <div class="col-lg-8">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title" style="font-size: 25px;">Register Form </h1>
+                        <hr>
+
+
+                        <div class=" mb-3">
+
+
+                            <label for="title" class="mb-1" style="font-size: 20px;">First Name</label>
+                            <input type="firstname" [(ngModel)]="newAdmin.firstname" name="firstname" id="firstname"
+                                placeholder="Enter your firstname" class="form-control mb-3">
+                        </div>
+
+
+                        <div class=" mb-3">
+
+
+                            <label for="title" class="mb-1" style="font-size: 20px;">Last Name</label>
+                            <input type="text" [(ngModel)]="newAdmin.lastname" name="lastname" id="lastname"
+                                placeholder="Enter your lastname" class="form-control mb-3">
+                        </div>
+
+
+                        <div class="mb-3 ">
+                            <label for="role" class="mb-1"
+                                style="font-size: 20px;">Role</label>
+                            <div>
+                                <select [(ngModel)]="newAdmin.role" class="form-select "
+                                    aria-label="Default select example" name="role">
+                                    <option selected>Select Role</option>
+                                    <option *ngFor="let role of roles" [value]="role">{{role}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class=" mb-3">
+
+
+                            <label for="title" class="mb-1" style="font-size: 20px;">Email</label>
+                            <input type="text" [(ngModel)]="newAdmin.email" name="email" id="email"
+                                placeholder="Enter your email" class="form-control mb-3">
+                        </div>
+
+                        <div class=" mb-3">
+
+
+                            <label for="Verified" class="mb-1" style="font-size: 20px;">Verified</label>
+                            <div>
+                                <select [(ngModel)]="newAdmin.isActive" class="form-select "
+                                    aria-label="Default select example" name="Verified">
+                                    <option selected>True</option>
+                                    <option  >False</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+
+
+                <div class="card">
+                    <div class="card-body mt-3">
+                        <label for="inputText" style="font-size: 20px;">Avatar <span style="font-size: 12px;">(suggested
+                                1:1)</span></label>
+                        <hr>
+                        <ngx-dropzone class="justify-content-center" (change)="onSelect($event)">
+
+
+
+                            <ngx-dropzone-image-preview class="justify-content-center"
+                                ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true"
+                                (removed)="onRemove(f)">
+
+                            </ngx-dropzone-image-preview>
+                        </ngx-dropzone>
+                        <ngx-dropzone class=" select-image mt-3 text-center" (change)="onSelect($event)">Select
+                            Avatar</ngx-dropzone>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+            <button *ngIf="!submitButton" type="submit" class="btn btn-success col-2 ms-3 disabled"
+                id="submitbtn">Please wait...</button>
+            <button *ngIf="submitButton" type="submit" class="btn btn-success col-2 ms-3" id="submitbtn">submit</button>
+
+        </form>
+
+    </section>
+
+</main>

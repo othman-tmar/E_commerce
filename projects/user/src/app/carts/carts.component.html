@@ -1,0 +1,183 @@
+<div>
+
+  <section class="padding-y " style="border-radius: 23px;">
+    <div class="container p-3" style="border-radius: 23px;">
+
+      <!-- =================== COMPONENT CART+SUMMARY ====================== -->
+      <div class="row ">
+        <div class="col-lg-9">
+
+          <div class="card mb-2" style="border-radius: 23px;">
+            <div class="content-body ">
+
+              <h3 class="card-title mb-2 pb-3 pt-3 text-center text-light"
+                style="font-family: sans-serif;background-color:#0099CC ;border-top-right-radius: 23px;border-top-left-radius: 23px;">
+                Your shopping cart</h3>
+
+              <div *ngIf="showMyMessage" class="text-center p-2 m-5"
+                style="background-color:#023020 ;border-radius:23px;">
+                <img src="../../assets/logo.png" height="150" width="80%" class="mb-3">
+                <h1 class="text-center text-light">Thank you {{userName}} ! </h1>
+                <h3 id="msg_success" class="text-light" style="font-weight: 700;">Your order has been placed
+                  successfully !</h3>
+              </div>
+
+              <div *ngFor="let c of cartitems">
+                <div *ngFor="let p of products">
+
+                  <article class="row  p-2  mb-4" *ngIf="c.product == p._id">
+
+                    <div class="col-lg-5 text-center">
+                      <figure class="itemside me-lg-2 ps-3">
+                        <div class="aside">
+
+                          <img src={{p.imageCover}} class="img-sm img-thumbnail " width="220"
+                            style="border-radius: 23px;">
+
+                        </div>
+                        <figcaption class="info">
+
+                          <h5 class="pt-1" style="color:#0099CC;">{{p.title}}</h5>
+
+
+                        </figcaption>
+                      </figure>
+                    </div>
+
+
+                    <div class="col-auto d-flex align-items-center ps-5 ">
+
+                      <label class="me-2" for="qty">Quantity </label>
+                      <input id="qty" type="number" value="{{c.quantity}}"
+                        (change)="qtyprice(c._id,p.priceAfterDiscount,$event)" class="rounded text-center"
+                        style="width: 80px;">
+
+                    </div>
+
+
+                    <div class="col-lg-2 col-sm-4 col-6  d-flex align-items-center justify-content-center">
+                      <div class="price-wrap lh-sm">
+                        <var class="price h6">{{c.price}} $</var> <br>
+
+                        <small class="text-muted"> {{p.priceAfterDiscount}} $ / per item
+                        </small>
+                      </div> <!-- price-wrap .// -->
+                    </div>
+
+
+                    <div class="col-lg col-sm-4 d-flex align-items-center justify-content-center">
+                      <div class="float-lg-end">
+
+                        <a (click)="deleteproductitem(c._id)" class="btn btn-light text-danger m-2 "> Remove</a>
+                      </div>
+                    </div>
+
+
+                  </article> <!-- row.// -->
+                </div>
+              </div>
+
+              <div class="row d-flex align-items-center p-3 ">
+                <div class="col-12 col-lg-8 text-center text-lg-end">
+                  <h4>Move to Shop to make orders</h4>
+                </div>
+                <div class="col-12 col-lg-2 text-center text-lg-start"><button routerLink=""
+                    class="btn btn-success   ">Let's shop</button></div>
+              </div>
+
+            </div> <!-- card-body .// -->
+
+            <div class="content-body border-top ps-4">
+              <p><i class="me-2 text-muted fa-lg fa fa-truck"></i> Free Delivery within 1-2 weeks</p>
+
+            </div> <!-- card-body.// -->
+
+          </div> <!-- card.// -->
+
+        </div> <!-- col.// -->
+        <aside class="col-lg-3">
+
+          <div class="card mb-3" *ngIf="cartitemsCheck">
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label class="form-label">Have coupon?</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" name="" placeholder="Coupon code">
+                    <button class="btn btn-light">Apply</button>
+                  </div>
+                </div>
+              </form>
+            </div> <!-- card-body.// -->
+          </div> <!-- card.// -->
+
+          <div class="card" *ngIf="cartitemsCheck">
+            <div class="card-body">
+              <dl class="dlist-align">
+                <dt>Total price:</dt>
+                <dd class="text-end"> {{totalprice}}</dd>
+              </dl>
+              <dl class="dlist-align">
+                <dt>Discount:</dt>
+                <dd class="text-end text-success"> - ${{discount}}</dd>
+              </dl>
+              <dl class="dlist-align">
+                <dt>TAX:</dt>
+                <dd class="text-end"> ${{tax}} </dd>
+              </dl>
+              <hr>
+              <dl class="dlist-align">
+                <dt>Total:</dt>
+                <dd class="text-end text-dark h5"> ${{total}} </dd>
+              </dl>
+
+              <div class="d-grid gap-2 my-3">
+
+                <google-pay-button environment="TEST" buttonSizeMode="fill" buttonType="buy" buttonColor="black" [paymentRequest]="{
+  apiVersion: 2,
+  apiVersionMinor: 0,
+  allowedPaymentMethods: [
+    {
+      type: 'CARD',
+      parameters: {
+        allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
+        allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
+      },
+      tokenizationSpecification: {
+        type: 'PAYMENT_GATEWAY',
+        parameters: {
+          gateway: 'example',
+          gatewayMerchantId: 'exampleGatewayMerchantId'
+        }
+      }
+    }
+  ],
+  merchantInfo: {
+    merchantId: 'BCR2DN4TZ3F4VZK2',
+    merchantName: 'Ramzi shop'
+  },
+  transactionInfo: {
+    totalPriceStatus: 'FINAL',
+    totalPriceLabel: 'Total',
+    totalPrice: total.toString(),
+    currencyCode: 'USD',
+    countryCode: 'US'
+  }
+}" (loadpaymentdata)="order()"></google-pay-button>
+
+                <a href="" class="btn btn-light w-100"> Back to shop </a>
+              </div>
+            </div> <!-- card-body.// -->
+          </div> <!-- card.// -->
+
+        </aside> <!-- col.// -->
+
+      </div> <!-- row.// -->
+      <!-- =================== COMPONENT 1 CART+SUMMARY .//END  ====================== -->
+
+      <br><br>
+
+    </div>
+  </section>
+
+</div>

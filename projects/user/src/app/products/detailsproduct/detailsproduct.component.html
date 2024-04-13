@@ -1,0 +1,283 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div class="container mt-2 pb-4">
+  <div class="card" style="border-radius: 23px;">
+    <span *ngIf="product.sold>0" class="percent">-{{product.sold}}%</span>
+    <div class="row g-0">
+      <div class="col-md-6 border-end">
+        <div class="d-flex flex-column justify-content-center">
+          <div class="main_image"> <img src={{product.imageCover}} id="main_product_image" width="366" height="260"
+              style="border-radius: 23px;">
+          </div>
+          <div class="thumbnail_images">
+            <ul id="thumbnail">
+              <li *ngFor="let s of product.images"><img (click)="toCover(s)" src={{s}} width="70" height="50"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3 right-side">
+          <div class="d-flex justify-content-between align-items-center">
+            <h3>{{product.title}}</h3> <span class="heart"><i class='bx bx-heart'></i></span>
+          </div>
+          <div class="mt-2 pr-3 content">
+            <p [innerHTML]="product.description"></p>
+          </div>
+          <div>
+
+            <div *ngIf="product.sold>0">
+              <s class="text-danger fs-4 ms-4">{{product.price}} $</s>
+              <h3>{{product.priceAfterDiscount}} $ </h3>
+            </div>
+
+            <div *ngIf="product.sold==0" class="mt-5 ps-3">
+              <h3>{{product.price}} $ </h3>
+            </div>
+
+            <div class="mtb-5">
+              <span class="f-10 ml-5 semi-bold color-lite">{{product.ratingsQuantity}} Reviews</span>
+            </div>
+
+            <div class="crop box box1 " [style.width.px]="(product.ratingsAverage*75)/5">
+              <div style="width: 75px">
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+            </div>
+            <div class="box box2">
+              <span class="fa fa-star-o"></span>
+              <span class="fa fa-star-o"></span>
+              <span class="fa fa-star-o"></span>
+              <span class="fa fa-star-o"></span>
+              <span class="fa fa-star-o"></span>
+            </div>
+
+
+            <div class="mt-5">
+
+              <div class="colors">
+                <ul id="marker ">
+
+
+
+                  <li *ngFor="let c of product.colors" [ngStyle]="{'background-color': c}" class="border"></li>
+
+
+                  <h6 class="ms-3">Disponible only :
+                    <span class="text-danger "> {{product.quantity}} Pieces!</span>
+                  </h6>
+                </ul>
+              </div>
+
+
+            </div>
+
+
+            <div class="buttons d-flex flex-row mt-5 gap-3">
+              <button class="btn btn-outline-dark">Buy Now</button>
+              <button (click)="AddToCart(product._id,product.priceAfterDiscount)" class="btn btn-dark">Add to
+                cart</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- comments section -->
+
+    <section class="main">
+      <div class="full-boxer">
+
+        <div class="com-box row  justify-content-evenly">
+
+          <h1 class="text-center">Customers Reviews</h1>
+
+
+          <div *ngFor="let c of product.comments" class="comment-box mt-4 col-lg-3 ms-1">
+            <!-- <div *ngIf="c.comment.length>0"  > -->
+            <div *ngFor="let u of users">
+
+
+              <div class="row mb-2" *ngIf="c.user == u.uid">
+
+                <div class="profile-image col-2 pt-1">
+                  <img src={{u.photoURL}}>
+                </div>
+
+                <div class="col-7 align-items-center ">
+
+                  <div class="col-12"><strong class="ps-2 text-start">{{u.displayName}}</strong></div>
+
+                  <div class="col-12 ps-1"><span>{{ c.date | date:'MM/dd/yyyy hh:mm a' }}</span></div>
+
+                </div>
+
+
+                <div *ngIf="c.user==this.userUID" class="col-2 pe-2">
+                  <button class=" btn btn-danger" (click)="DeleteComment(c._id)"><i class="bi bi-trash"></i></button>
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div *ngFor="let r of product.ratings">
+              <div *ngIf="r.user == c.user " class=" position: relative">
+
+                <div class="crop box box1 " [style.width.px]="(r.rate*75)/5">
+                  <div style="width: 75px">
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+                </div>
+                <div class="box box2">
+                  <span class="fa fa-star-o"></span>
+                  <span class="fa fa-star-o"></span>
+                  <span class="fa fa-star-o"></span>
+                  <span class="fa fa-star-o"></span>
+                  <span class="fa fa-star-o"></span>
+                </div>
+
+
+              </div>
+
+            </div>
+
+            <div class="comment mt-5">
+              <p>{{c.comment}}</p>
+            </div>
+            <!-- </div> -->
+          </div>
+
+
+
+
+          <!--add review section-->
+          <div class="mt-5">
+          <div class="card1">
+
+            <div class="row">
+
+
+
+              <div class="col-9">
+
+             <div *ngFor="let u of users">
+                  <div *ngIf="u.uid==userUID">
+                    <img src="{{u.photoURL}}" width="70" class="rounded-circle mt-2" style="position: absolute;top: 25px;left: 25px;">
+                  </div>
+                </div>
+                <div class="comment-box ml-2">
+
+                  <h4 class="text-center">Add Review</h4>
+
+                  <div class="rating-wrap ">
+
+                    <div class="center">
+                      <fieldset class="rating">
+                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" class="full"
+                          title="Awesome"></label>
+                        <input type="radio" id="star4.5" name="rating" value="4.5" /><label for="star4.5"
+                          class="half"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4"
+                          class="full"></label>
+                        <input type="radio" id="star3.5" name="rating" value="3.5" /><label for="star3.5"
+                          class="half"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"
+                          class="full"></label>
+                        <input type="radio" id="star2.5" name="rating" value="2.5" /><label for="star2.5"
+                          class="half"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2"
+                          class="full"></label>
+                        <input type="radio" id="star1.5" name="rating" value="1.5" /><label for="star1.5"
+                          class="half"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1"
+                          class="full"></label>
+                        <input type="radio" id="star0.5" name="rating" value="0.5" /><label for="star0.5"
+                          class="half"></label>
+                      </fieldset>
+                    </div>
+
+                    <div >
+                      <h4 id="rating-value"  hidden></h4>
+                    </div>
+
+                    <div><button class="btn btn-success btn-sm" (click)="AddUserRate()">Rate</button></div>
+
+                  </div>
+
+                  <div class="comment-area">
+
+                    <textarea class="form-control" placeholder="what is your view?" rows="4"
+                      [(ngModel)]="comment"></textarea>
+
+                  </div>
+
+                  <div class="comment-btns mt-2">
+
+                    <div class="row">
+
+                      <div class="col-6">
+
+                        <div class="pull-left">
+
+                          <button class="btn btn-danger btn-sm">Cancel</button>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col-6">
+
+                        <div class="pull-right">
+
+                          <button class="btn btn-success send btn-sm" (click)="AddUserComment()">Send <i
+                              class="fa fa-long-arrow-right ml-1"></i></button>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+          </div>
+          </div>
+
+
+
+        </div>
+      </div>
+
+
+    </section>
+
+
+
+
+
+  </div>
+</div>
